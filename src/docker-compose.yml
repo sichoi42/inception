@@ -13,8 +13,8 @@ services:
             - my_docker
         tty: true
     nginx:
-        container_name: mariadb
-        build: ./requirements/mariadb
+        container_name: nginx
+        build: ./requirements/nginx
         restart: always
         ports:
             - "443:443"
@@ -24,8 +24,8 @@ services:
             - my_docker
         tty: true
     wordpress:
-        container_name: mariadb
-        build: ./requirements/mariadb
+        container_name: wordpress
+        build: ./requirements/wordpress
         restart: always
         volumes:
             - data:/var/www/html
