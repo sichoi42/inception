@@ -1,0 +1,39 @@
+version: '3'
+
+volumes:
+    data: {}
+services:
+    mariadb:
+        container_name: mariadb
+        build: ./requirements/mariadb
+        restart: always
+        expose:
+            - "3306"
+        networks:
+            - my_docker
+        tty: true
+    nginx:
+        container_name: mariadb
+        build: ./requirements/mariadb
+        restart: always
+        ports:
+            - "443:443"
+        volumes:
+            - data:/var/www/html
+        networks:
+            - my_docker
+        tty: true
+    wordpress:
+        container_name: mariadb
+        build: ./requirements/mariadb
+        restart: always
+        volumes:
+            - data:/var/www/html
+        expose:
+            - "9000"
+        networks:
+            - my_docker
+        tty: true
+networks:
+    my_docker:
+        driver: bridge
