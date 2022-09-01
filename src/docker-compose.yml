@@ -15,6 +15,8 @@ services:
     nginx:
         container_name: nginx
         build: ./requirements/nginx
+        extra_hosts:
+            - "${INTRA_ID}.42.fr:127.0.0.1"
         restart: always
         ports:
             - "443:443"
