@@ -18,4 +18,4 @@ RUN			chmod +x /tmp/init.sh
 # Handle Every Signal Correctly by Dumb Init to PID 1
 ENTRYPOINT	["/usr/bin/dumb-init", "--"]
 
-CMD			["bash", "/tmp/init.sh"]
+CMD 		["nginx", "-g", "daemon off;"]
