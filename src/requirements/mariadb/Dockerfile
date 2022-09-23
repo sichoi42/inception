@@ -5,18 +5,18 @@ RUN			apt-get update -y && \
 			apt-get -y install mariadb-server vim sudo procps dumb-init && \
 			chmod +x /usr/bin/dumb-init
 
+WORKDIR		/
 
-RUN			mkdir -p /run/mysqld /var/lib/mysql && \
-			chown -R mysql:mysql /run/mysqld /var/lib/mysql
+RUN			mkdir -p /var/run/mysqld && \
+			chown -R mysql:mysql /var/run/mysqld && \
+			chmod 777 /var/run/mysqld
 
-COPY		./conf/50-server.conf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY		./tools/init.sh ./init.sh
+COPY		./conf/my_wordpress.sql ./my_wordpress.sql
 
-COPY		./tools/init.sh /tmp/init.sh
-
-RUN			chmod +x /tmp/init.sh
+RUN			chmod +x ./init.sh
 
 # Handle Every Signal Correctly by Dumb Init to PID 1
-ENTRYPOINT	["/usr/bin/dumb-init", "--"]
+ENTRYPOINT	["/usr/bin/dumb-init", "--", "bash", "./init.sh"]
 
-CMD 		["mysqld_safe"]
-
+CMD			["mysqld", "--bind-address=0.0.0.0"]

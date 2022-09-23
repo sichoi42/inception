@@ -1,41 +1,48 @@
 version: '3'
 
 volumes:
-    data: {}
+  data: {}
 services:
-    mariadb:
-        container_name: mariadb
-        build: ./requirements/mariadb
-        restart: always
-        ports:
-            - "3308:3306"
-        networks:
-            - my_docker
-        tty: true
-    nginx:
-        container_name: nginx
-        build: ./requirements/nginx
-        extra_hosts:
-            - "${INTRA_ID}.42.fr:127.0.0.1"
-        restart: always
-        ports:
-            - "443:443"
-        volumes:
-            - data:/var/www/html
-        networks:
-            - my_docker
-        tty: true
-    wordpress:
-        container_name: wordpress
-        build: ./requirements/wordpress
-        restart: always
-        volumes:
-            - data:/var/www/html
-        expose:
-            - "9000"
-        networks:
-            - my_docker
-        tty: true
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    restart: always
+    environment:
+      MARIADB_DATABASE_HOST: ${HOST}
+      MARIADB_DATABASE: ${DATABASE}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ADMIN_USER: ${DB_ADMIN_USER}
+      MARIADB_ADMIN_PASSWORD: ${DB_ADMIN_PASSWORD}
+    ports:
+      - "3308:3306"
+    networks:
+      - my_docker
+    tty: true
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    extra_hosts:
+      - "${INTRA_ID}.42.fr:${HOST}"
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - data:/var/www/html
+    networks:
+      - my_docker
+    tty: true
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    restart: always
+    volumes:
+      - data:/var/www/html
+    expose:
+      - "9000"
+    networks:
+      - my_docker
+    tty: true
 networks:
-    my_docker:
-        driver: bridge
+  my_docker:
+    driver: bridge
