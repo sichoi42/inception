@@ -25,7 +25,7 @@ else
 	echo "CREATE USER '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PASSWORD';" | mysql -u$MARIADB_USER -p$MARIADB_PASSWORD
 
 	# Import database
-	mysql -u$MARIADB_USER -p$MARIADB_PASSWORD $MARIADB_DATABASE < ./my_wordpress.sql
+	mysql -u$MARIADB_ADMIN_USER -p$MARIADB_ADMIN_PASSWORD $MARIADB_DATABASE < ./my_wordpress.sql
 fi
 
 service mysql stop
