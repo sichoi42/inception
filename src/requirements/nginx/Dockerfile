@@ -11,10 +11,6 @@ RUN			openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 
 COPY		./conf/nginx.conf /etc/nginx/conf.d/nginx.conf
 
-COPY		./tools/init.sh /tmp/init.sh
-
-RUN			chmod +x /tmp/init.sh
-
 # Handle Every Signal Correctly by Dumb Init to PID 1
 ENTRYPOINT	["/usr/bin/dumb-init", "--"]
 
