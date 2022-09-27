@@ -94,3 +94,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
+
+// $test = mysqli_connect('127.0.0.1:3306', getenv('MARIADB_ADMIN_USER'), getenv('MARIADB_ADMIN_PASSWORD'));
+
+// if (!$test) {
+
+// die('MySQL Error: ' . mysqli_error());
+
+// }
