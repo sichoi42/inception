@@ -10,7 +10,6 @@ RUN			apt-get update -y && \
 			curl \
 			php-mysql \
 			php-xml \
-			# sendmail \
 			wget \
 			vim \
 			dumb-init \
@@ -27,15 +26,11 @@ RUN			wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.
 
 WORKDIR		/var/www/wordpress
 
-# COPY		./conf/wp-config.php /tmp/wp-config.php
+COPY		./tools/init.sh /tmp/init.sh
 
-COPY		./tools/init.sh ./init.sh
-
-RUN			chmod +x ./init.sh
-
-# RUN			./init.sh
+RUN			chmod +x /tmp/init.sh
 
 EXPOSE		9000
 
 # Handle Every Signal Correctly by Dumb Init to PID 1
-ENTRYPOINT	["/usr/bin/dumb-init", "--", "bash", "./init.sh"]
+ENTRYPOINT	["/usr/bin/dumb-init", "--", "bash", "/tmp/init.sh"]
