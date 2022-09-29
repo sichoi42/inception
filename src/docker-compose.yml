@@ -10,6 +10,8 @@ services:
     ports:
       - "3308:3306"
     image: mariadb
+    volumes:
+      - mariadb:/var/lib/mysql
     networks:
       - my_docker
     tty: true
@@ -24,7 +26,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - data:/var/www/html
+      - wordpress:/var/www/html
     image: nginx
     networks:
       - my_docker
@@ -39,7 +41,7 @@ services:
       - .env
     image: wordpress
     volumes:
-      - data:/var/www/html
+      - wordpress:/var/www/html
     expose:
       - "9000"
     networks:
@@ -51,4 +53,13 @@ networks:
     driver: bridge
 
 volumes:
-  data: {}
+  wordpress:
+    driver: local
+    driver_opts:
+      type: volume
+      device: /home/sichoi/data/wordpress
+  mariadb:
+    driver: local
+    driver_opts:
+      type: volume
+      device: /home/sichoi/data/mariadb
