@@ -13,7 +13,8 @@ RUN			apt-get update -y && \
 			wget \
 			vim \
 			dumb-init \
-			sudo
+			sudo \
+			redis
 
 RUN			chmod +x /usr/bin/dumb-init && \
 			mkdir -p /var/www/wordpress && \

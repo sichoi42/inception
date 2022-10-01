@@ -2,11 +2,11 @@ NAME = inception
 SET_DOMAIN = .set_domain
 
 $(NAME) :
-	ifeq ("$(wildcard $(SET_DOMAIN))", "")
-		sudo chmod 777 /etc/hosts
-		sudo echo "127.0.0.1 sichoi.42.fr" >> /etc/hosts
-		touch $(SET_DOMAIN)
-	endif
+ifeq ("$(wildcard $(SET_DOMAIN))", "")
+	sudo chmod 777 /etc/hosts
+	sudo echo "127.0.0.1 sichoi.42.fr" >> /etc/hosts
+	touch $(SET_DOMAIN)
+endif
 	sudo mkdir -p ${HOME}/data/wordpress ${HOME}/data/mariadb
 	sudo docker-compose -f srcs/docker-compose.yml up --force-recreate --build -d
 

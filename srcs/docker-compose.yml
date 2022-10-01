@@ -15,6 +15,7 @@ services:
     networks:
       - my_docker
     tty: true
+
   nginx:
     container_name: nginx
     build: ./requirements/nginx
@@ -31,6 +32,7 @@ services:
     networks:
       - my_docker
     tty: true
+
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
@@ -48,6 +50,15 @@ services:
       - my_docker
     tty: true
 
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis
+    restart: always
+    image: redis
+    networks:
+      - my_docker
+    tty: true
+
 networks:
   my_docker:
     driver: bridge
@@ -58,10 +69,10 @@ volumes:
     driver_opts:
       type: volume
       o: bind
-      device: /home/sichoi/data/wordpress
+      device: ${HOME}/data/wordpress
   mariadb:
     driver: local
     driver_opts:
       type: volume
       o: bind
-      device: /home/sichoi/data/mariadb
+      device: ${HOME}/data/mariadb
