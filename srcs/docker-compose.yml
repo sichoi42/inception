@@ -74,8 +74,6 @@ services:
       - wordpress:/var/www/html
     ports:
       - "2121:21"
-    networks:
-      - my_docker
     tty: true
 
 
