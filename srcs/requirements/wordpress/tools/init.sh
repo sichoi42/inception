@@ -4,14 +4,11 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 RESET='\033[0m'
 
-# If Configuration File Needs to be Changed
-if [ $? -eq 0 ]; then
-  echo "env[MARIADB_HOST] = \$MARIADB_HOST" >> /etc/php/7.3/fpm/pool.d/www.conf
-  echo "env[MARIADB_ADMIN_USER] = \$MARIADB_ADMIN_USER" >> /etc/php/7.3/fpm/pool.d/www.conf
-  echo "env[MARIADB_ADMIN_PASSWORD] = \$MARIADB_ADMIN_PASSWORD" >> /etc/php/7.3/fpm/pool.d/www.conf
-  echo "env[MARIADB_DATABASE] = \$MARIADB_DATABASE" >> /etc/php/7.3/fpm/pool.d/www.conf
-  echo "listen = 0.0.0.0:9000" >> /etc/php/7.3/fpm/pool.d/www.conf
-fi
+echo "env[MARIADB_HOST] = \$MARIADB_HOST" >> /etc/php/7.3/fpm/pool.d/www.conf
+echo "env[MARIADB_ADMIN_USER] = \$MARIADB_ADMIN_USER" >> /etc/php/7.3/fpm/pool.d/www.conf
+echo "env[MARIADB_ADMIN_PASSWORD] = \$MARIADB_ADMIN_PASSWORD" >> /etc/php/7.3/fpm/pool.d/www.conf
+echo "env[MARIADB_DATABASE] = \$MARIADB_DATABASE" >> /etc/php/7.3/fpm/pool.d/www.conf
+echo "listen = 0.0.0.0:9000" >> /etc/php/7.3/fpm/pool.d/www.conf
 
 chown -R :www-data /var/www/wordpress
 

@@ -63,6 +63,23 @@ services:
       - my_docker
     tty: true
 
+  ftp:
+    container_name: ftp
+    build: ./requirements/bonus/ftp
+    restart: always
+    env_file:
+      - .env
+    image: ftp
+    volumes:
+      - wordpress:/var/www/html
+    ports:
+      - "21:21"
+    networks:
+      - my_docker
+    tty: true
+
+
+
 networks:
   my_docker:
     driver: bridge
