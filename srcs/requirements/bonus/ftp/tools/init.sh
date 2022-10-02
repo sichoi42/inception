@@ -10,7 +10,7 @@ if [ ! -f "/etc/vsftpd/vsftpd.conf" ]; then
 
 	echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
 
-	chown -R $FTP_USER:$FTP_USER /var/www/html
+	chown -R $FTP_USER:$FTP_USER /var/www/html/wordpress
 
 	echo "ftpd_banner=Welcome to $FTP_USER FTP service!!" >> /etc/vsftpd.conf
 
