@@ -22,11 +22,11 @@ ps :
 
 .PHONY : log
 log :
-	sudo docker-compose -f srcs/docker-compose.yml logs -f ${CT}
+	sudo docker-compose -f srcs/docker-compose.yml logs -f ${ct}
 
 .PHONY : exec
 exec :
-	sudo docker-compose -f srcs/docker-compose.yml exec ${CT} /bin/bash
+	sudo docker-compose -f srcs/docker-compose.yml exec ${ct} /bin/bash
 
 clean :
 	sudo docker-compose -f srcs/docker-compose.yml down --remove-orphans --rmi all --volumes
