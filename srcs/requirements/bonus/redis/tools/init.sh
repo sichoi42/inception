@@ -1,4 +1,4 @@
-cp /tmp/redis.conf /usr/local/etc/redis/redis.conf
+cp /tmp/redis.conf /etc/redis.conf
 
 # Run by Dumb Init
-redis-server /usr/local/etc/redis/redis.conf
+redis-server /etc/redis.conf
