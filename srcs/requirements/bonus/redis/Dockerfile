@@ -1,10 +1,8 @@
-FROM		debian:buster
+FROM        alpine:3.13
 
-RUN			apt-get update -y && \
-			apt-get upgrade -y && \
-			apt-get install -y \
-			redis \
-			dumb-init
+RUN         apk update && \
+            apk add redis && \
+            wget -O /usr/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_x86_64
 
 RUN			chmod +x /usr/bin/dumb-init
 
