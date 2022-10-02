@@ -1,4 +1,7 @@
+
 if [ ! -f "/etc/vsftpd/vsftpd.conf" ]; then
+	chmod 777 /tmp/vsftpd.conf
+
 	cp /tmp/vsftpd.conf /etc/vsftpd/vsftpd.conf
 
 	adduser $FTP_USER --disabled-password --gecos "" --home /home/$FTP_USER --shell /bin/bash
