@@ -54,7 +54,11 @@ services:
     container_name: redis
     build: ./requirements/bonus/redis
     restart: always
+    env_file:
+      - .env
     image: redis
+    ports:
+      - "6379:6379"
     networks:
       - my_docker
     tty: true
