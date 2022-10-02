@@ -2,18 +2,18 @@
 if [ ! -f "/etc/vsftpd/vsftpd.conf" ]; then
 	chmod 777 /tmp/vsftpd.conf
 
-	cp /tmp/vsftpd.conf /etc/vsftpd/vsftpd.conf
+	mkdir -p /var/run/vsftpd/empty
 
-	adduser $FTP_USER --disabled-password --gecos "" --home /home/$FTP_USER --shell /bin/bash
+	cp /tmp/vsftpd.conf /etc/vsftpd.conf
+
+	adduser $FTP_USER --disabled-password
 
 	echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
 
-	echo "ftpd_banner=Welcome to $FTP_USER FTP service!!" >> /etc/vsftpd/vsftpd.conf
+	chown -R $FTP_USER:$FTP_USER /var/www/wordpress
+
+	echo "ftpd_banner=Welcome to $FTP_USER FTP service!!" >> /etc/vsftpd.conf
 fi
 
-chgrp -R $FTP_USER root
-chown -R $FTP_USER root
-chmod -R +x root
-
 # Run by Dumb Init
-vsftpd /etc/vsftpd/vsftpd.conf
+vsftpd /etc/vsftpd.conf
