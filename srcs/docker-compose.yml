@@ -73,7 +73,7 @@ services:
     volumes:
       - wordpress:/var/www/html
     ports:
-      - "21:21"
+      - "2121:21"
     networks:
       - my_docker
     tty: true
