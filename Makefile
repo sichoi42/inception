@@ -22,7 +22,7 @@ ps :
 
 .PHONY : log
 log :
-	sudo docker-compose -f srcs/docker-compose.yml logs -f
+	sudo docker-compose -f srcs/docker-compose.yml logs -f ${CT}
 
 .PHONY : exec
 exec :

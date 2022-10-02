@@ -69,10 +69,10 @@ volumes:
     driver_opts:
       type: volume
       o: bind
-      device: ${HOME}/data/wordpress
+      device: /home/sichoi/data/wordpress
   mariadb:
     driver: local
     driver_opts:
       type: volume
       o: bind
-      device: ${HOME}/data/mariadb
+      device: /home/sichoi/data/mariadb
