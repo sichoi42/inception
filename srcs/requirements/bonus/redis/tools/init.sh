@@ -1,4 +1,4 @@
-cp /tmp/redis.conf /etc/redis/redis.conf
+# cp /tmp/redis.conf /etc/redis/redis.conf
 
 chmod 777 /etc/redis/redis.conf
 
