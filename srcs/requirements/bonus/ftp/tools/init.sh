@@ -9,7 +9,7 @@ if [ ! -f "/etc/vsftpd/vsftpd.conf" ]; then
 
 	cp /tmp/vsftpd.conf /etc/vsftpd.conf
 
-	adduser $FTP_USER --disabled-password
+	adduser $FTP_USER --disabled-password --gecos "" --home /home/$FTP_USER --shell /bin/bash
 
 	echo "$FTP_USER:$FTP_PASSWORD" | chpasswd > /dev/null
 
