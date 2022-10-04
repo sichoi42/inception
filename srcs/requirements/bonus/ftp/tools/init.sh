@@ -13,7 +13,7 @@ if [ ! -f "/etc/vsftpd/vsftpd.conf" ]; then
 
 	echo "$FTP_USER:$FTP_PASSWORD" | chpasswd > /dev/null
 
-	echo "local_root=$FTP_PATH" >> /etc/vsftpd/vsftpd.conf
+	echo "local_root=$FTP_PATH" >> /etc/vsftpd.conf
 
 	# echo "ftpd_banner=Welcome to $FTP_USER FTP service!!" >> /etc/vsftpd.conf
 
