@@ -3,8 +3,8 @@ FROM		debian:buster AS builder
 
 RUN			apt-get update -y
 RUN			apt-get upgrade -y
-RUN			apt-get install -y snapd
-RUN			snap install hugo --channel=extended
+RUN			apt-get install -y \
+			hugo
 
 RUN			mkdir -p /app
 
