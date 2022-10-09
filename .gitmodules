@@ -1,0 +1,3 @@
+[submodule "srcs/requirements/bonus/hugo/tools/app"]
+	path = srcs/requirements/bonus/hugo/tools/app
+	url = https://github.com/sichoi42/Hugo-quickstart
