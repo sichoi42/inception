@@ -1,10 +1,12 @@
 # Stage for build
 FROM		debian:buster AS builder
 
-RUN			apt-get update -y
-RUN			apt-get upgrade -y
-RUN			apt-get install -y \
-			hugo
+RUN			apt update
+RUN			apt install -y \
+			snapd
+
+RUN 		snap install core
+RUN 		snap install hugo --channel=extended
 
 RUN			mkdir -p /app
 
