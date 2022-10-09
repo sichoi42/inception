@@ -7,7 +7,7 @@ ifeq ("$(wildcard $(SET_DOMAIN))", "")
 	sudo echo "127.0.0.1 sichoi.42.fr" >> /etc/hosts
 	touch $(SET_DOMAIN)
 endif
-	sudo mkdir -p ${HOME}/data/wordpress ${HOME}/data/mariadb
+	sudo mkdir -p ${HOME}/data/wordpress ${HOME}/data/mariadb ${HOME}/data/hugo
 	sudo docker-compose -f srcs/docker-compose.yml up --force-recreate --build -d
 
 all : $(NAME)
