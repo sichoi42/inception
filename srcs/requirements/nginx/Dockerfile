@@ -1,9 +1,10 @@
 FROM		debian:buster
 
-RUN			apt-get update -y && \
-			apt-get upgrade -y && \
-			apt-get install -y nginx openssl vim sudo procps dumb-init && \
-			chmod +x /usr/bin/dumb-init
+RUN			apt-get update -y
+RUN			apt-get upgrade -y
+RUN			apt-get install -y nginx openssl vim sudo procps dumb-init
+
+RUN			chmod +x /usr/bin/dumb-init
 
 RUN			openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 			-subj "/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=sichoi/CN=sichoi.42.fr" \

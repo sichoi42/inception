@@ -1,15 +1,16 @@
 FROM		debian:buster
 
-RUN			apt-get update -y && \
-			apt-get upgrade -y && \
-			apt-get -y install mariadb-server vim sudo procps dumb-init && \
-			chmod +x /usr/bin/dumb-init
+RUN			apt-get update -y
+RUN			apt-get upgrade -y
+RUN			apt-get -y install mariadb-server vim sudo procps dumb-init
+
+RUN			chmod +x /usr/bin/dumb-init
 
 WORKDIR		/
 
-RUN			mkdir -p /var/run/mysqld && \
-			chown -R mysql:mysql /var/run/mysqld && \
-			chmod 777 /var/run/mysqld
+RUN			mkdir -p /var/run/mysqld
+RUN			chown -R mysql:mysql /var/run/mysqld
+RUN			chmod 777 /var/run/mysqld
 
 COPY		./tools/init.sh ./init.sh
 COPY		./conf/my_wordpress.sql ./my_wordpress.sql
