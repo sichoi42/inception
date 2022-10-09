@@ -91,6 +91,19 @@ services:
       - my_docker
     tty: true
 
+  hugo:
+    container_name: hugo
+    build: ./requirements/bonus/hugo
+    restart: always
+    image: hugo
+    volumes:
+      - hugo:/var/www/html
+    ports:
+      - "8000:8000"
+    networks:
+      - my_docker
+    tty: true
+
 
 
 networks:
@@ -110,3 +123,9 @@ volumes:
       type: volume
       o: bind
       device: /home/sichoi/data/mariadb
+  hugo:
+    driver: local
+    driver_opts:
+      type: volume
+      o: bind
+      device: /home/sichoi/data/hugo
