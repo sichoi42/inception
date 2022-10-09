@@ -3,7 +3,7 @@ FROM		debian:buster
 RUN			apt-get update -y
 RUN			apt-get upgrade -y
 RUN			apt-get install -y \
-			php7.3 php-fpm php-cli curl php-mysql wget vim dumb-init sudo redis
+			mariadb-client php7.3 php-fpm php-cli curl php-mysql wget vim dumb-init sudo redis
 
 RUN			chmod +x /usr/bin/dumb-init
 RUN			mkdir -p /var/www/wordpress
