@@ -6,7 +6,7 @@ RESET='\033[0m'
 
 echo "listen = 0.0.0.0:8000" >> /etc/php/7.3/fpm/pool.d/www.conf
 
-if [! -f "/var/www/html/wordpress/adminer/index.php"]
+if [ ! -f "/var/www/html/wordpress/adminer/index.php" ]
 then
 	curl -s -L https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1-mysql-en.php --output /var/www/html/wordpress/adminer/index.php
 fi
