@@ -1,8 +1,8 @@
 # Stage for build
 FROM		debian:buster AS builder
 
-RUN			apt update
-RUN			apt install -y \
+RUN			apt-get update
+RUN			apt-get install -y \
 			snapd
 
 # RUN 		apt-get update
@@ -11,9 +11,7 @@ RUN			apt install -y \
 
 # RUN 		daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
 
-RUN 		systemctl unmask snapd.service
-RUN 		systemctl enable snapd.service
-RUN 		systemctl start snapd.service
+RUN 		service snapd start
 
 RUN 		snap install core
 RUN 		snap install hugo --channel=extended
