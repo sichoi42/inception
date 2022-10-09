@@ -11,10 +11,10 @@ RUN			apt-get install -y \
 
 # RUN 		daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
 
-RUN 		service snapd start
+# RUN 		service snapd start
 
-RUN 		snap install core
-RUN 		snap install hugo --channel=extended
+# RUN 		snap install core
+# RUN 		snap install hugo --channel=extended
 
 RUN			mkdir -p /app
 
@@ -23,7 +23,7 @@ WORKDIR		/app
 COPY		./tools/app /app
 
 # Build the application with Hugo
-RUN			hugo -D
+# RUN			hugo -D
 
 # Stage for Running
 FROM		debian:buster AS server
