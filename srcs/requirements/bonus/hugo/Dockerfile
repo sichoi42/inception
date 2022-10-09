@@ -5,10 +5,10 @@ RUN			apt-get update
 RUN			apt-get install -yqq \
 			snapd sudo daemonize dbus-user-session fontconfig
 
-RUN 		adduser --disabled-password --gecos "" root  \
-    && echo 'root:root' | chpasswd \
-    && adduser root sudo \
-    && echo 'root ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN 		adduser --disabled-password --gecos "" sichoi  \
+    && echo 'sichoi:sichoi' | chpasswd \
+    && adduser sichoi sudo \
+    && echo 'sichoi ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 RUN 		sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
 RUN			exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
