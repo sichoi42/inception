@@ -6,9 +6,9 @@ RUN			apt-get install -y \
 			git
 
 RUN			mkdir $HOME/src
-RUN			cd $HOME/src
+WORKDIR		$HOME/src
 RUN			git clone https://github.com/gohugoio/hugo.git
-RUN			cd hugo
+WORKDIR		hugo
 RUN			go install --tags extended
 
 RUN			mkdir -p /app
