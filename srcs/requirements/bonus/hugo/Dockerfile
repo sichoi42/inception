@@ -2,19 +2,14 @@
 FROM		debian:buster AS builder
 
 RUN			apt-get update
-RUN			apt-get install -yqq \
-			snapd sudo daemonize dbus-user-session fontconfig
+RUN			apt-get install -y \
+			git
 
-RUN 		adduser --disabled-password --gecos "" sichoi  \
-    && echo 'sichoi:sichoi' | chpasswd \
-    && adduser sichoi sudo \
-    && echo 'sichoi ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-
-RUN 		sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
-RUN			exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
-
-RUN 		snap install core
-RUN 		snap install hugo --channel=extended
+RUN			mkdir $HOME/src
+RUN			cd $HOME/src
+RUN			git clone https://github.com/gohugoio/hugo.git
+RUN			cd hugo
+RUN			go install --tags extended
 
 RUN			mkdir -p /app
 
