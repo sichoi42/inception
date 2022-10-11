@@ -8,7 +8,7 @@ RUN			apt-get install -y \
 RUN			curl -s -L https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_0.104.3_linux-amd64.tar.gz
 RUN 		tar -xvf hugo_0.104.3_linux-amd64.tar.gz
 RUN 		chmod +x hugo
-RUn 		mv hugo /usr/local/bin
+RUN 		mv hugo /usr/local/bin
 
 RUN			mkdir -p /app
 
