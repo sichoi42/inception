@@ -10,14 +10,12 @@ RUN 		tar -xvf hugo_0.104.3_linux-amd64.tar.gz
 RUN 		chmod +x hugo
 RUN 		mv hugo /usr/local/bin
 
-RUN			mkdir -p /app
+COPY		./tools/app /app
 
 WORKDIR		/app
 
-COPY		./tools/app /app
-
 # Build the application with Hugo
-# RUN			hugo -D
+RUN			hugo -D
 
 # # Stage for Running
 FROM		debian:buster AS server
@@ -28,7 +26,7 @@ RUN			apt-get install -y \
 			nginx vim dumb-init sudo
 
 RUN			mkdir -p /var/www/html
-# COPY		--from=builder /app/public /var/www/html
+COPY		--from=builder /app/public /var/www/html
 
 COPY		./conf/nginx.conf /etc/nginx/conf.d/nginx.conf
 
