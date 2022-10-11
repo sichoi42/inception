@@ -26,6 +26,8 @@ RUN			apt-get install -y \
 			nginx vim dumb-init sudo
 
 RUN			mkdir -p /var/www/html
+
+RUN			rm -rf /var/www/html/*
 RUN			cp -r /app/public/* /var/www/html
 
 COPY		./conf/nginx.conf /etc/nginx/conf.d/nginx.conf
