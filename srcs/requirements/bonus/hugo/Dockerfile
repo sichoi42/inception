@@ -35,4 +35,4 @@ WORKDIR		/app
 # # Handle Every Signal Correctly by Dumb Init to PID 1
 # ENTRYPOINT	["/usr/bin/dumb-init", "--", "nginx", "-g", "daemon off;"]
 
-ENTRYPOINT		["hugo", "server", "--bind=\"localhost\"", "--appendPort=false", "--port=1313", "--baseUrl=\"sichoi.42.fr\"", "--buildDrafts"]
+ENTRYPOINT		["hugo", "server", "--bind=localhost", "--appendPort=false", "--port=1313", "--baseUrl=sichoi.42.fr", "--buildDrafts"]
