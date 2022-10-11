@@ -18,7 +18,7 @@ WORKDIR		/app
 RUN			hugo --baseURL="http://hugo:1313" -D
 
 # # Stage for Running
-# FROM		debian:buster AS server
+FROM		debian:buster AS server
 
 RUN			apt-get update -y
 RUN			apt-get upgrade -y
@@ -27,7 +27,7 @@ RUN			apt-get install -y \
 
 RUN			mkdir -p /var/www/html
 
-RUN			cp -r /app/public/* /var/www/html
+COPY		--from=builder /app/public /var/www/html
 
 COPY		./conf/nginx.conf /etc/nginx/conf.d/nginx.conf
 
