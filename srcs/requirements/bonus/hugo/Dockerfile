@@ -17,8 +17,8 @@ WORKDIR		/app
 # # Build the application with Hugo
 RUN			hugo -D
 
-# Stage for Running
-FROM		debian:buster AS server
+# # Stage for Running
+# FROM		debian:buster AS server
 
 RUN			apt-get update -y
 RUN			apt-get upgrade -y
