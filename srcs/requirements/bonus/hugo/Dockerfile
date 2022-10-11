@@ -28,9 +28,6 @@ RUN			apt-get install -y \
 RUN			mkdir -p /var/www/html
 COPY		--from=builder /app/public /var/www/html
 
-RUN			rm /etc/nginx/sites-enabled/default
-RUN			ln -s /etc/nginx/sites-available/mysite /etc/nginx/sites-enabled/mysite
-
 COPY		./conf/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 RUN			chmod +x /usr/bin/dumb-init
