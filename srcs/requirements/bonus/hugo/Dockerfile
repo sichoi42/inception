@@ -5,8 +5,8 @@ RUN			apt-get update
 RUN			apt-get install -y \
 			curl
 
-RUN			curl -s -L https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_0.104.3_linux-arm64.tar.gz
-RUN 		tar -xvf hugo_0.104.3_linux-arm64.tar.gz
+RUN			curl -s -L https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_0.104.3_linux-amd64.tar.gz
+RUN 		tar -xvf hugo_0.104.3_linux-amd64.tar.gz
 RUN 		chmod +x hugo
 RUn 		mv hugo /usr/local/bin
 
