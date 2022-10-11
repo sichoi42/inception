@@ -15,7 +15,7 @@ COPY		./tools/app /app
 WORKDIR		/app
 
 # Build the application with Hugo
-RUN			hugo -D
+RUN			hugo
 
 # # Stage for Running
 FROM		debian:buster AS server
