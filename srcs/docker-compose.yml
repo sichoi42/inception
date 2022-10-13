@@ -98,8 +98,8 @@ services:
     image: hugo
     volumes:
       - hugo:/var/www/html
-    # ports:
-    #   - "1313:1313"
+    ports:
+      - "1313:1313"
     networks:
       - my_docker
     tty: true
