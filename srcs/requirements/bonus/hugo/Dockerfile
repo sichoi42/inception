@@ -15,7 +15,7 @@ COPY		./tools/app /app
 WORKDIR		/app
 
 # # Build the application with Hugo
-RUN			hugo --baseURL="hugo.42.fr" -D
+RUN			hugo --baseURL="http://127.0.0.1" -D
 # RUN			hugo -D
 
 # # Stage for Running
