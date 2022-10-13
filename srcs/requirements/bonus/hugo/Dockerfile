@@ -15,8 +15,8 @@ COPY		./tools/app /app
 WORKDIR		/app
 
 # # Build the application with Hugo
-# RUN			hugo --baseURL="http://hugo:1313" -D
-RUN			hugo -D
+RUN			hugo --baseURL="https://sichoi.42.fr/hugo" -D
+# RUN			hugo -D
 
 # # Stage for Running
 FROM		debian:buster AS server
