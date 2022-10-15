@@ -5,10 +5,9 @@ RUN			apt-get update
 RUN			apt-get install -y \
 			wget
 
-RUN			wget https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_0.104.3_linux-amd64.tar.gz
-RUN 		tar -xvf hugo_0.104.3_linux-amd64.tar.gz
-RUN 		chmod +x hugo
-RUN 		mv hugo /usr/local/bin
+COPY		./tools/install_hugo.sh ./install_hugo.sh
+
+RUN 		bash install_hugo.sh
 
 COPY		./tools/app /app
 
